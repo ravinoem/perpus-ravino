@@ -14,3 +14,9 @@ class Book extends Model
         'publisher' => '[]'
     ];
 }
+
+foreach (Book::all() as $book) {
+    echo $book->name;
+}
+
+$freshBook = $book->fresh();
