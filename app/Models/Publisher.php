@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
 {
-    use HasFactory;
+    protected $primarykey = 'publisher_id';
+    protected $attributes = [
+        'name' => '[]',
+        'address' => '[]'
+    ];
 }

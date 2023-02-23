@@ -10,8 +10,8 @@ class Book extends Model
     protected $primarykey = 'book_id';
     protected $attributes = [
         'name' => '[]',
-        'author' => '[]',
-        'publisher' => '[]'
+        $foreignkey = 'author_id' => '[]',
+        $foreignkey = 'publisher_id' => '[]'
     ];
 }
 
