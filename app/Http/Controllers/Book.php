@@ -11,6 +11,9 @@ class BookController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
+        foreach (Book::all() as $book) {
+            echo $book->name;
+        }
 
         $book = new Book;
 
