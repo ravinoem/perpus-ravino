@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     protected $attributes = [
-        $primarykey = 'book_id',
+        $primarykey = 'id',
         'name' => '[]',
-        $foreignkey = 'author_id' => '[]',
-        $foreignkey = 'publisher_id' => '[]'
+        'author_id' => '[]',
+        'publisher_id' => '[]'
     ];
 }
 

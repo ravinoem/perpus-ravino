@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Publisher extends Model
 {
     protected $attributes = [
-        $primarykey = 'publisher_id',
+        $primarykey = 'id',
         'name' => '[]',
         'address' => '[]'
     ];
