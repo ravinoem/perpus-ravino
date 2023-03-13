@@ -32,7 +32,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
 
-        return $book
+        return $book;
     }
 
     //UPDATE
