@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/book', 'BookController@index');
+Route::post('/book', 'BookController@create');
+Route::get('/book/{id}', 'BookController@detail');
+Route::put('/book/{id}', 'BookController@update');
+Route::delete('/book/{id}', 'BookController@delete');
