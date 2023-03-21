@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,11 @@ Route::post('/book', [BookController::class, 'create']);
 Route::get('/book/{id}', [BookController::class, 'detail']);
 Route::put('/book/{id}', [BookController::class, 'update']);
 Route::delete('/book/{id}', [BookController::class, 'delete']);
+
+Route::prefix('author')->group(function () {
+    Route::get('/', [AuthorController::class, 'index']);
+    Route::post('/', [AuthorController::class, 'create']);
+    Route::get('/{id}', [AuthorController::class, 'detail']);
+    Route::put('/{id}', [AuthorController::class, 'update']);
+    Route::delete('/{id}', [AuthorController::class, 'delete']);
+});

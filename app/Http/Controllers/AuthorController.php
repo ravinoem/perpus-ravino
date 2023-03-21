@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class BookController extends Controller
+class AuthorController extends Controller
 {
     public function index()
     {
-        $book = Book::all();
+        $book = Author::all();
         $data = ['book'=>$book];
         return $data;
     }
@@ -21,12 +21,12 @@ class BookController extends Controller
     {
         $request->validate([
             'name' => ['required'],
+            'address' => ['required'],
         ]);
 
-        $book = new Book();
+        $book = new Author();
         $book->name = $request->name;
-        $book->author_id = $request->author_id;
-        $book->publisher_id = $request->publisher_id;
+        $book->address = $request->address;
         $book->save();
 
         return "Data Saved";
@@ -36,7 +36,7 @@ class BookController extends Controller
     //READ
     public function detail($id)
     {
-        $book = Book::find($id);
+        $book = Author::find($id);
 
         return $book;
     }
@@ -44,10 +44,9 @@ class BookController extends Controller
     //UPDATE
     public function update(Request $request, $id)
     {
-        $book = Book::find($id);
+        $book = Author::find($id);
         $book->name = $request->name;
-        $book->author_id = $request->author_id;
-        $book->publisher_id = $request->publisher_id;
+        $book->address = $request->address;
         $book->save();
 
         return "Data Updated";
@@ -57,7 +56,7 @@ class BookController extends Controller
     //DELETE
     public function delete($id)
     {
-        $book = Book::find($id);
+        $book = Author::find($id);
         $book->delete();
 
         return "Data Deleted";

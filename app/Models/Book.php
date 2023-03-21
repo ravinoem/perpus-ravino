@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $attributes = [
-        $primarykey = 'id',
-        'name' => '[]',
-        'author_id' => '[]',
-        'publisher_id' => '[]'
-    ];
+    const ATTR_TABLE = 'books';
+    protected $table = self::ATTR_TABLE;
+    // protected $attributes = [
+    //     $primarykey = 'id',
+    //     'name' => '[]',
+    //     'author_id' => '[]',
+    //     'publisher_id' => '[]'
+    // ];
 }
 
-$freshBook = $book->fresh();
+// $freshBook = $book->fresh();
