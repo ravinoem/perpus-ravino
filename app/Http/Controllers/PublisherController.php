@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Author;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,8 +11,8 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $author = Author::all();
-        $data = ['book'=>$author];
+        $publisher = Publisher::all();
+        $data = ['book'=>$publisher];
         return $data;
     }
 
@@ -24,10 +24,10 @@ class AuthorController extends Controller
             'address' => ['required'],
         ]);
 
-        $author = new Author();
-        $author->name = $request->name;
-        $author->address = $request->address;
-        $author->save();
+        $publisher = new Publisher();
+        $publisher->name = $request->name;
+        $publisher->address = $request->address;
+        $publisher->save();
 
         return "Data Saved";
 
@@ -36,18 +36,18 @@ class AuthorController extends Controller
     //READ
     public function detail($id)
     {
-        $author = Author::find($id);
+        $publisher = Publisher::find($id);
 
-        return $author;
+        return $publisher;
     }
 
     //UPDATE
     public function update(Request $request, $id)
     {
-        $author = Author::find($id);
-        $author->name = $request->name;
-        $author->address = $request->address;
-        $author->save();
+        $publisher = Publisher::find($id);
+        $publisher->name = $request->name;
+        $publisher->address = $request->address;
+        $publisher->save();
 
         return "Data Updated";
 
@@ -56,8 +56,8 @@ class AuthorController extends Controller
     //DELETE
     public function delete($id)
     {
-        $author = Author::find($id);
-        $author->delete();
+        $publisher = Publisher::find($id);
+        $publisher->delete();
 
         return "Data Deleted";
     }
