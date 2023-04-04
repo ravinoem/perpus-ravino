@@ -12,8 +12,10 @@ class AuthorController extends Controller
     public function index()
     {
         $author = Author::all();
-        $data = ['book'=>$author];
-        return $data;
+        return response()->json([
+            'message' => 'Fetch data success',
+            'data' => $author,
+        ]);
     }
 
     //CREATE
@@ -29,7 +31,10 @@ class AuthorController extends Controller
         $author->address = $request->address;
         $author->save();
 
-        return "Data Saved";
+        return response()->json([
+            'message' => 'Data updated',
+            'data' => $author,
+        ]);
 
     }
 

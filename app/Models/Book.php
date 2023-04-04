@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
+    use SoftDeletes;
     const ATTR_TABLE            = 'books';
     const ATTR_INT_ID           = 'id';
     const ATTR_CHAR_NAME        = 'name';

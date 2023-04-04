@@ -12,8 +12,10 @@ class BookController extends Controller
     public function index()
     {
         $book = Book::all();
-        $data = ['book'=>$book];
-        return $data;
+        return response()->json([
+            'message' => 'Fetch data success',
+            'data' => $book,
+        ]);
     }
 
     //CREATE
@@ -25,11 +27,14 @@ class BookController extends Controller
 
         $book = new Book();
         $book->name = $request->name;
-        $book->author_id = $request->author_id;
-        $book->publisher_id = $request->publisher_id;
+        $book->author_id = $request->author;
+        $book->publisher_id = $request->publisher;
         $book->save();
 
-        return "Data Saved";
+        return response()->json([
+            'message' => 'Data updated',
+            'data' => $book,
+        ]);
 
     }
 
@@ -45,10 +50,16 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $book = Book::find($id);
-        $book->name = $request->name;
-        $book->author_id = $request->author_id;
-        $book->publisher_id = $request->publisher_id;
+        $book->{Book::ATTR_CHAR_NAME} = $request->name;
+        $book->author_id = $request->author;
+        $book->publisher_id = $request->publisher;
         $book->save();
+
+        $book = Book::find($id)->update([
+            Book::ATTR_CHAR_NAME => $request->name,
+            Book::ATTR_INT_AUTHOR => $request->author,
+            Book::ATTR_INT_PUBLISHER => $request->book,
+        ]);
 
         return "Data Updated";
 

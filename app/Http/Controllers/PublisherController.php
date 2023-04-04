@@ -12,8 +12,10 @@ class PublisherController extends Controller
     public function index()
     {
         $publisher = Publisher::all();
-        $data = ['book'=>$publisher];
-        return $data;
+        return response()->json([
+            'message' => 'Fetch data success',
+            'data' => $publisher,
+        ]);
     }
 
     //CREATE
@@ -29,7 +31,10 @@ class PublisherController extends Controller
         $publisher->address = $request->address;
         $publisher->save();
 
-        return "Data Saved";
+        return response()->json([
+            'message' => 'Data updated',
+            'data' => $publisher,
+        ]);
 
     }
 
