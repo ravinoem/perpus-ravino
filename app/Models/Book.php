@@ -7,14 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    const ATTR_TABLE = 'books';
+    const ATTR_TABLE            = 'books';
+    const ATTR_INT_ID           = 'id';
+    const ATTR_CHAR_NAME        = 'name';
+    const ATTR_INT_AUTHOR       = 'author_id';
+    const ATTR_INT_PUBLISHER    = 'publisher_id';
+
     protected $table = self::ATTR_TABLE;
-    // protected $attributes = [
-    //     $primarykey = 'id',
-    //     'name' => '[]',
-    //     'author_id' => '[]',
-    //     'publisher_id' => '[]'
-    // ];
+
+    protected $primaryKey = self::ATTR_INT_ID;
+
+    public $incrementing = true;
+
+    protected $fillable = [
+
+        self::ATTR_CHAR_NAME,
+        self::ATTR_INT_AUTHOR,
+        self::ATTR_INT_PUBLISHER
+
+    ];
 }
 
-// $freshBook = $book->fresh();

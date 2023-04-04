@@ -7,7 +7,7 @@ use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class AuthorController extends Controller
+class PublisherController extends Controller
 {
     public function index()
     {

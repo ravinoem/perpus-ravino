@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\PublisherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,12 @@ Route::post('/', [AuthorController::class, 'create']);
 Route::get('/{id}', [AuthorController::class, 'detail']);
 Route::put('/{id}', [AuthorController::class, 'update']);
 Route::delete('/{id}', [AuthorController::class, 'delete']);
+});
+
+Route::prefix('publisher')->group(function () {
+Route::get('/', [PublisherController::class, 'index']);
+Route::post('/', [PublisherController::class, 'create']);
+Route::get('/{id}', [PublisherController::class, 'detail']);
+Route::put('/{id}', [PublisherController::class, 'update']);
+Route::delete('/{id}', [PublisherController::class, 'delete']);
 });
