@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('address');
+        Schema::create(Author::ATTR_TABLE, function (Blueprint $table) {
+            $table->increments(Author::ATTR_INT_ID);
+            $table->string(Author::ATTR_CHAR_NAME);
+            $table->string(Author::ATTR_CHAR_ADDRESS);
             $table->timestamps();
             $table->softDeletes();
         });

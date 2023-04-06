@@ -26,4 +26,9 @@ class Author extends Model
         self::ATTR_CHAR_ADDRESS
 
     ];
+
+    public function book()
+    {
+        return $this->hasMany(Book::class, Book::ATTR_INT_ID);
+    }
 }

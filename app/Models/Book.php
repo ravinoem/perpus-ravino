@@ -15,18 +15,28 @@ class Book extends Model
     const ATTR_INT_AUTHOR       = 'author_id';
     const ATTR_INT_PUBLISHER    = 'publisher_id';
 
-    protected $table = self::ATTR_TABLE;
+    protected $table        = self::ATTR_TABLE;
 
-    protected $primaryKey = self::ATTR_INT_ID;
+    protected $primaryKey   = self::ATTR_INT_ID;
 
-    public $incrementing = true;
+    public $incrementing    = true;
 
-    protected $fillable = [
+    protected $fillable     = [
 
         self::ATTR_CHAR_NAME,
         self::ATTR_INT_AUTHOR,
         self::ATTR_INT_PUBLISHER
 
     ];
+
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class, self::ATTR_INT_PUBLISHER);
+    }
+
+    public function author()
+    {
+        return $this->hasMany(Author::class, Author::ATTR_INT_ID);
+    }
 }
 
