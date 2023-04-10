@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\Publisher;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,16 +16,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::create(Book::ATTR_TABLE, function (Blueprint $table) {
+            $table->increments(Book::ATTR_INT_ID);
+            $table->string(Book::ATTR_CHAR_NAME);
 
-            $table->unsignedInteger('author_id');
-            $table->unsignedInteger('publisher_id');
+            $table->unsignedInteger(Book::ATTR_INT_AUTHOR);
+            $table->unsignedInteger(Book::ATTR_INT_PUBLISHER);
 
-            $table->foreign('author_id')->references('id')->on('authors');
-            $table->foreign('publisher_id')->references('id')->on('publishers');
+            $table->foreign(Book::ATTR_INT_AUTHOR)->references(Author::ATTR_INT_ID)->on(Author::ATTR_TABLE);
+            $table->foreign(Book::ATTR_INT_PUBLISHER)->references(Publisher::ATTR_INT_ID)->on(Publisher::ATTR_TABLE);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists(Book::ATTR_TABLE);
     }
 };
