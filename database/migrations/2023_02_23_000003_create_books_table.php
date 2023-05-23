@@ -25,7 +25,6 @@ return new class extends Migration
 
             $table->foreign(Book::ATTR_INT_AUTHOR)->references(Author::ATTR_INT_ID)->on(Author::ATTR_TABLE);
             $table->foreign(Book::ATTR_INT_PUBLISHER)->references(Publisher::ATTR_INT_ID)->on(Publisher::ATTR_TABLE);
-            $table->dateTime(Book::ATTR_DATETIME_DELETED);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,7 +14,6 @@ class Book extends Model
     const ATTR_CHAR_NAME        = 'name';
     const ATTR_INT_AUTHOR       = 'author_id';
     const ATTR_INT_PUBLISHER    = 'publisher_id';
-    const ATTR_DATETIME_DELETED = 'deleted_at';
 
     protected $table        = self::ATTR_TABLE;
 
